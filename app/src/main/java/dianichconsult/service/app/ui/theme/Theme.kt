@@ -1,12 +1,10 @@
 package dianichconsult.service.app.ui.theme
 
 import android.app.Activity
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
@@ -14,44 +12,23 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 
-private val LightColorScheme = lightColorScheme(
-    primary = PrimaryBlue,
-    onPrimary = OnPrimary,
-    primaryContainer = AccentCyan,
-    onPrimaryContainer = PrimaryBlueDark,
-    secondary = SecondaryLight,
-    onSecondary = OnPrimary,
-    tertiary = TertiaryLight,
-    onTertiary = OnPrimary,
-    background = BackgroundLight,
-    onBackground = OnSurfaceLight,
-    surface = SurfaceLight,
-    onSurface = OnSurfaceLight,
-    surfaceVariant = BackgroundLight,
-    onSurfaceVariant = MutedGray,
-    outline = DividerColor,
-    error = ErrorRed,
-    onError = OnPrimary,
-)
-
 private val DarkColorScheme = darkColorScheme(
-    primary = AccentCyan,
-    onPrimary = PrimaryBlueDark,
-    primaryContainer = PrimaryBlue,
-    onPrimaryContainer = AccentCyan,
-    secondary = SecondaryDark,
-    onSecondary = PrimaryBlueDark,
-    tertiary = TertiaryDark,
-    onTertiary = PrimaryBlueDark,
-    background = BackgroundDark,
-    onBackground = OnSurfaceDark,
-    surface = SurfaceDark,
-    onSurface = OnSurfaceDark,
-    surfaceVariant = SurfaceDark,
-    onSurfaceVariant = MutedGray,
-    outline = DividerDark,
+    primary = Primary,
+    secondary = Accent,
+    tertiary = Accent,
+    background = Background,
+    surface = Surface,
+    onPrimary = OnPrimary,
+    onSecondary = OnPrimary,
+    onTertiary = OnPrimary,
+    onBackground = OnSurface,
+    onSurface = OnSurface,
+    onSurfaceVariant = MutedText,
+    outline = Divider,
     error = ErrorRed,
-    onError = OnPrimary,
+    surfaceVariant = Surface,
+    inverseSurface = OnSurface,
+    inverseOnSurface = Background,
 )
 
 private val AppShapes = Shapes(
@@ -62,22 +39,19 @@ private val AppShapes = Shapes(
 
 @Composable
 fun ANCSLTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            window.statusBarColor = Background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = DarkColorScheme,
         typography = Typography,
         shapes = AppShapes,
         content = content

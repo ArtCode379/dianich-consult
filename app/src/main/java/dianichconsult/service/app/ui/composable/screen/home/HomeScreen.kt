@@ -46,7 +46,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import dianichconsult.service.app.R
 import dianichconsult.service.app.data.model.ServiceModel
 import dianichconsult.service.app.ui.composable.shared.ANCSLContentWrapper
@@ -58,29 +57,28 @@ import org.koin.androidx.compose.koinViewModel
 private data class HeroSlide(val titleRes: Int, val subtitleRes: Int, val imageRes: Int)
 
 private val heroSlides = listOf(
-    HeroSlide(R.string.home_hero_title_1, R.string.home_hero_subtitle_1, R.drawable.hero_it_strategy),
-    HeroSlide(R.string.home_hero_title_2, R.string.home_hero_subtitle_2, R.drawable.hero_cybersecurity),
-    HeroSlide(R.string.home_hero_title_3, R.string.home_hero_subtitle_3, R.drawable.hero_cloud),
+    HeroSlide(R.string.home_hero_title_1, R.string.home_hero_subtitle_1, R.drawable.service_strategy),
+    HeroSlide(R.string.home_hero_title_2, R.string.home_hero_subtitle_2, R.drawable.service_cyber),
+    HeroSlide(R.string.home_hero_title_3, R.string.home_hero_subtitle_3, R.drawable.service_cloud),
 )
 
 private data class CaseStudy(val titleRes: Int, val descRes: Int, val imageRes: Int)
 
 private val caseStudies = listOf(
-    CaseStudy(R.string.portfolio_1_title, R.string.portfolio_1_desc, R.drawable.case_fintech),
-    CaseStudy(R.string.portfolio_2_title, R.string.portfolio_2_desc, R.drawable.case_healthcare),
-    CaseStudy(R.string.portfolio_3_title, R.string.portfolio_3_desc, R.drawable.case_retail),
-    CaseStudy(R.string.portfolio_4_title, R.string.portfolio_4_desc, R.drawable.case_manufacturing),
+    CaseStudy(R.string.portfolio_1_title, R.string.portfolio_1_desc, R.drawable.portfolio1),
+    CaseStudy(R.string.portfolio_2_title, R.string.portfolio_2_desc, R.drawable.portfolio2),
+    CaseStudy(R.string.portfolio_3_title, R.string.portfolio_3_desc, R.drawable.portfolio3),
 )
 
-private data class KBArticle(val titleRes: Int, val descRes: Int)
+private data class KBArticle(val titleRes: Int, val descRes: Int, val imageRes: Int)
 
 private val kbArticles = listOf(
-    KBArticle(R.string.kb_1_title, R.string.kb_1_desc),
-    KBArticle(R.string.kb_2_title, R.string.kb_2_desc),
-    KBArticle(R.string.kb_3_title, R.string.kb_3_desc),
+    KBArticle(R.string.kb_1_title, R.string.kb_1_desc, R.drawable.article1),
+    KBArticle(R.string.kb_2_title, R.string.kb_2_desc, R.drawable.article2),
+    KBArticle(R.string.kb_3_title, R.string.kb_3_desc, R.drawable.article3),
 )
 
-private val categories = listOf("All", "Cybersecurity", "Cloud", "Business")
+private val categories = listOf("All", "Security", "Cloud", "Optimization", "Strategy", "Analytics", "Development")
 
 @Composable
 fun HomeScreen(
@@ -136,19 +134,16 @@ private fun ServicesPopulated(
 
     LazyColumn(
         modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(bottom = 16.dp),
+        contentPadding = PaddingValues(bottom = 24.dp),
     ) {
-        // Hero Carousel
         item {
             HeroCarousel()
         }
 
-        // Section: Services
         item {
             SectionHeader(stringResource(R.string.home_section_services))
         }
 
-        // Category Chips
         item {
             Row(
                 modifier = Modifier
@@ -171,6 +166,13 @@ private fun ServicesPopulated(
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = MaterialTheme.colorScheme.primary,
                             selectedLabelColor = Color.White,
+                            containerColor = MaterialTheme.colorScheme.surface,
+                            labelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        ),
+                        border = FilterChipDefaults.filterChipBorder(
+                            borderColor = Color(0xFF2A3140),
+                            enabled = true,
+                            selected = false,
                         ),
                     )
                 }
@@ -178,7 +180,6 @@ private fun ServicesPopulated(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
-        // Service Cards Grid (2 per row)
         val rows = filteredServices.chunked(2)
         items(rows, key = { it.first().id }) { rowServices ->
             Row(
@@ -201,7 +202,6 @@ private fun ServicesPopulated(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
-        // Portfolio Section
         item {
             SectionHeader(stringResource(R.string.home_section_portfolio))
         }
@@ -218,7 +218,6 @@ private fun ServicesPopulated(
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-        // Knowledge Base
         item {
             SectionHeader(stringResource(R.string.home_section_knowledge))
         }
@@ -257,7 +256,7 @@ private fun HeroCarousel() {
                             Brush.verticalGradient(
                                 colors = listOf(
                                     Color.Transparent,
-                                    Color(0xCC0D47A1),
+                                    Color(0xCC0F1419),
                                 )
                             )
                         ),
@@ -271,18 +270,17 @@ private fun HeroCarousel() {
                         text = stringResource(slide.titleRes),
                         color = Color.White,
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                     )
                     Text(
                         text = stringResource(slide.subtitleRes),
-                        color = Color.White.copy(alpha = 0.9f),
+                        color = Color(0xFF00BFA6),
                         style = MaterialTheme.typography.bodyMedium,
                     )
                 }
             }
         }
 
-        // Dots
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -312,7 +310,7 @@ private fun SectionHeader(title: String) {
     Text(
         text = title,
         style = MaterialTheme.typography.titleLarge,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.SemiBold,
         color = MaterialTheme.colorScheme.onBackground,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
     )
@@ -325,11 +323,10 @@ private fun ServiceCard(
     onClick: () -> Unit,
 ) {
     Card(
-        modifier = modifier
-            .clickable(onClick = onClick),
+        modifier = modifier.clickable(onClick = onClick),
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
     ) {
         Column {
             Image(
@@ -342,10 +339,11 @@ private fun ServiceCard(
             )
             Column(modifier = Modifier.padding(12.dp)) {
                 Text(
-                    text = service.category,
+                    text = service.category.uppercase(),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                 )
+                Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = service.name,
                     style = MaterialTheme.typography.titleSmall,
@@ -369,9 +367,9 @@ private fun ServiceCard(
 private fun CaseStudyCard(study: CaseStudy) {
     Card(
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        modifier = Modifier.width(260.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
+        modifier = Modifier.width(280.dp),
     ) {
         Column {
             Image(
@@ -379,7 +377,7 @@ private fun CaseStudyCard(study: CaseStudy) {
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(130.dp),
+                    .height(140.dp),
                 contentScale = ContentScale.Crop,
             )
             Column(modifier = Modifier.padding(12.dp)) {
@@ -406,27 +404,41 @@ private fun CaseStudyCard(study: CaseStudy) {
 private fun KBArticleCard(article: KBArticle) {
     Card(
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 4.dp),
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = stringResource(article.titleRes),
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSurface,
+        Row(
+            modifier = Modifier.padding(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Image(
+                painter = painterResource(id = article.imageRes),
+                contentDescription = null,
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(80.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop,
             )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = stringResource(article.descRes),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(article.titleRes),
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = stringResource(article.descRes),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
         }
     }
 }

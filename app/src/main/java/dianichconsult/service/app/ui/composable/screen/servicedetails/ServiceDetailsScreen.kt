@@ -20,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -85,7 +84,7 @@ private fun ServiceDetailsContent(
 
             dataEmpty = {
                 ANCSLEmptyView(
-                    primaryText = stringResource(R.string.services_state_empty_primary_text),
+                    primaryText = stringResource(R.string.service_details_state_empty_primary_text),
                     modifier = Modifier.fillMaxSize(),
                 )
             },
@@ -106,7 +105,6 @@ private fun ServicesDetailsPopulated(
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
     ) {
-        // Hero Image
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -123,7 +121,7 @@ private fun ServicesDetailsPopulated(
                     .fillMaxSize()
                     .background(
                         Brush.verticalGradient(
-                            colors = listOf(Color.Transparent, Color(0x990D47A1))
+                            colors = listOf(Color.Transparent, Color(0xCC0F1419))
                         )
                     ),
             )
@@ -133,14 +131,14 @@ private fun ServicesDetailsPopulated(
                     .padding(20.dp),
             ) {
                 Text(
-                    text = service.category,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = Color(0xFF26C6DA),
+                    text = service.category.uppercase(),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFF00BFA6),
                 )
                 Text(
                     text = service.name,
                     style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     color = Color.White,
                 )
             }
@@ -149,11 +147,10 @@ private fun ServicesDetailsPopulated(
         Column(
             modifier = Modifier.padding(16.dp),
         ) {
-            // Price
             Card(
                 shape = RoundedCornerShape(12.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Row(
@@ -171,7 +168,7 @@ private fun ServicesDetailsPopulated(
                     Text(
                         text = String.format("£%.2f", service.price),
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.primary,
                     )
                 }
@@ -179,7 +176,6 @@ private fun ServicesDetailsPopulated(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Description
             Text(
                 text = service.description,
                 style = MaterialTheme.typography.bodyLarge,
@@ -188,7 +184,6 @@ private fun ServicesDetailsPopulated(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Features
             if (service.features.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.service_details_features),
@@ -219,11 +214,10 @@ private fun ServicesDetailsPopulated(
                 }
             }
 
-            // Available Times
             service.availableTime?.let { times ->
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
-                    text = stringResource(R.string.service_details_availability),
+                    text = "Available Times",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -234,15 +228,16 @@ private fun ServicesDetailsPopulated(
                         Card(
                             shape = RoundedCornerShape(8.dp),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                containerColor = MaterialTheme.colorScheme.surface,
                             ),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                         ) {
                             Text(
                                 text = time.format(timeFormatter),
                                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Medium,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                color = MaterialTheme.colorScheme.primary,
                             )
                         }
                     }
@@ -251,7 +246,6 @@ private fun ServicesDetailsPopulated(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Book Consultation Button
             Button(
                 onClick = { onNavigateToCheckout(service.id) },
                 modifier = Modifier

@@ -38,7 +38,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import dianichconsult.service.app.R
 import dianichconsult.service.app.ui.viewmodel.ANCSLOnboardingVM
 import kotlinx.coroutines.launch
@@ -54,17 +53,17 @@ private val onboardingPagesContent = listOf(
     OnboardingContent(
         titleRes = R.string.page_1_title,
         descriptionRes = R.string.page_1_description,
-        imageRes = R.drawable.onboarding_strategy,
+        imageRes = R.drawable.onboard1,
     ),
     OnboardingContent(
         titleRes = R.string.page_2_title,
         descriptionRes = R.string.page_2_description,
-        imageRes = R.drawable.onboarding_security,
+        imageRes = R.drawable.onboard2,
     ),
     OnboardingContent(
         titleRes = R.string.page_3_title,
         descriptionRes = R.string.page_3_description,
-        imageRes = R.drawable.onboarding_cloud,
+        imageRes = R.drawable.onboard3,
     ),
 )
 
@@ -102,7 +101,6 @@ private fun OnboardingScreenContent(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        // Skip button
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -118,7 +116,6 @@ private fun OnboardingScreenContent(
             }
         }
 
-        // Pager
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
@@ -146,7 +143,7 @@ private fun OnboardingScreenContent(
                 Text(
                     text = stringResource(content.titleRes),
                     style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,
                 )
@@ -160,7 +157,6 @@ private fun OnboardingScreenContent(
             }
         }
 
-        // Dots indicator
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -182,7 +178,6 @@ private fun OnboardingScreenContent(
             }
         }
 
-        // Button
         Button(
             onClick = {
                 if (isLastPage) {

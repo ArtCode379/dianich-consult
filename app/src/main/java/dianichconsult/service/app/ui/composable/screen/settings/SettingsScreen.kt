@@ -22,6 +22,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,11 +44,10 @@ fun SettingsScreenContent(modifier: Modifier = Modifier) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
     ) {
-        // About section
         Text(
             text = stringResource(R.string.settings_about_header),
             style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onBackground,
         )
 
@@ -61,11 +61,10 @@ fun SettingsScreenContent(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Info card
         Card(
             shape = RoundedCornerShape(12.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
             modifier = Modifier.fillMaxWidth(),
         ) {
             Column(modifier = Modifier.padding(vertical = 4.dp)) {
@@ -76,7 +75,7 @@ fun SettingsScreenContent(modifier: Modifier = Modifier) {
 
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = 16.dp),
-                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                    color = Color(0xFF2A3140),
                 )
 
                 SettingsRow(
@@ -86,7 +85,7 @@ fun SettingsScreenContent(modifier: Modifier = Modifier) {
 
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = 16.dp),
-                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                    color = Color(0xFF2A3140),
                 )
 
                 Row(

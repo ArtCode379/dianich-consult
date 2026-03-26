@@ -1,5 +1,6 @@
 package dianichconsult.service.app.ui.composable.screen.bookings
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -90,6 +93,7 @@ fun BookingsScreen(
                 }
             },
             shape = RoundedCornerShape(12.dp),
+            containerColor = MaterialTheme.colorScheme.surface,
         )
     }
 }
@@ -101,7 +105,6 @@ private fun BookingsContent(
     onCancelBookingButtonClick: (bookingNumber: String) -> Unit,
 ) {
     Column(modifier = modifier) {
-
         ANCSLContentWrapper(
             dataState = bookingsState,
 
@@ -151,8 +154,8 @@ private fun BookingCard(
 ) {
     Card(
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF2A3140)),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -166,14 +169,25 @@ private fun BookingCard(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.weight(1f),
                 )
                 Text(
-                    text = stringResource(R.string.booking_number, booking.bookingNumber),
+                    text = stringResource(R.string.booking_status_confirmed),
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = Color(0xFF00E676),
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color(0xFF00E676).copy(alpha = 0.15f))
+                        .padding(horizontal = 8.dp, vertical = 4.dp),
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = stringResource(R.string.booking_number, booking.bookingNumber),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = stringResource(
                     R.string.booking_customer,
