@@ -8,6 +8,8 @@ data class ServiceModel(
     val name: String,
     val description: String,
     val price: Double,
+    val category: String = "",
+    val features: List<String> = emptyList(),
     val availableTime: List<LocalTime>? = null,
     @field:DrawableRes val imageRes: Int,
 )

@@ -6,57 +6,100 @@
     <string name="price_per_hour">£%1$.2f / per hour</string>
 
     <!-- top bar titles -->
-    <string name="top_bar_home_title">App Title</string>
+    <string name="top_bar_home_title">DIANICH Consult</string>
     <string name="top_bar_bookings_title">Bookings</string>
-    <string name="top_bar_checkout_title">Checkout</string>
+    <string name="top_bar_checkout_title">Book Consultation</string>
     <string name="top_bar_settings_title">Settings</string>
-    <string name="top_bar_service_details_title">Details</string>
+    <string name="top_bar_service_details_title">Service Details</string>
 
-    <!-- bottom bar navigation item titles -->
+    <!-- bottom bar -->
     <string name="bottom_bar_nav_item_home_title">Home</string>
     <string name="bottom_bar_nav_item_bookings_title">Bookings</string>
     <string name="bottom_bar_nav_item_settings_title">Settings</string>
 
-    <!-- onboarding screen -->
-    <string name="page_1_title">Page 1 Title</string>
-    <string name="page_2_title">Page 2 Title</string>
-    <string name="page_3_title">Page 3 Title</string>
-    <string name="page_1_description">Page 1 Description</string>
-    <string name="page_2_description">Page 2 Description</string>
-    <string name="page_3_description">Page 3 Description</string>
+    <!-- onboarding -->
+    <string name="page_1_title">Expert IT Strategy</string>
+    <string name="page_2_title">Cybersecurity &amp; Compliance</string>
+    <string name="page_3_title">Cloud &amp; Infrastructure</string>
+    <string name="page_1_description">Align technology with business objectives through strategic IT consulting, digital transformation roadmaps, and governance frameworks.</string>
+    <string name="page_2_description">Protect your organisation with security audits, GDPR compliance, penetration testing, and data protection advisory services.</string>
+    <string name="page_3_description">Migrate, optimise, and scale with expert cloud architecture, multi-cloud strategy, and cost management solutions.</string>
     <string name="next_button_title">Next</string>
-    <string name="start_button_title">Start</string>
+    <string name="start_button_title">Get Started</string>
     <string name="skip_button_title">Skip</string>
 
-    <!-- home screen -->
+    <!-- home -->
     <string name="services_state_empty_primary_text">No services available</string>
     <string name="button_view_details_text">View Details</string>
+    <string name="home_hero_title_1">Strategic IT Consulting</string>
+    <string name="home_hero_subtitle_1">Driving digital excellence for UK businesses</string>
+    <string name="home_hero_title_2">Cybersecurity Solutions</string>
+    <string name="home_hero_subtitle_2">Protecting your assets with expert security services</string>
+    <string name="home_hero_title_3">Cloud Architecture</string>
+    <string name="home_hero_subtitle_3">Scalable infrastructure for modern enterprises</string>
+    <string name="home_section_services">Our Services</string>
+    <string name="home_section_portfolio">Case Studies</string>
+    <string name="home_section_knowledge">Knowledge Base</string>
+    <string name="home_all_categories">All</string>
+
+    <!-- portfolio -->
+    <string name="portfolio_1_title">FinTech Platform Migration</string>
+    <string name="portfolio_1_desc">Migrated a payment processing platform to AWS, achieving 99.99% uptime and 60% cost reduction.</string>
+    <string name="portfolio_2_title">Healthcare GDPR Programme</string>
+    <string name="portfolio_2_desc">Implemented full GDPR compliance for an NHS trust, processing 2M+ patient records securely.</string>
+    <string name="portfolio_3_title">Retail Digital Transformation</string>
+    <string name="portfolio_3_desc">Delivered omnichannel e-commerce platform with 300% increase in online revenue within 12 months.</string>
+    <string name="portfolio_4_title">Manufacturing Automation</string>
+    <string name="portfolio_4_desc">Deployed RPA across supply chain operations, saving 15,000 manual hours annually.</string>
+
+    <!-- knowledge base -->
+    <string name="kb_1_title">Zero Trust Architecture: A Practical Guide</string>
+    <string name="kb_1_desc">Learn how to implement zero trust security principles across your IT infrastructure.</string>
+    <string name="kb_2_title">Cloud Cost Governance with FinOps</string>
+    <string name="kb_2_desc">Best practices for managing and optimising multi-cloud spending at enterprise scale.</string>
+    <string name="kb_3_title">GDPR Two Years On: Lessons Learned</string>
+    <string name="kb_3_desc">Key takeaways and common pitfalls from GDPR enforcement actions across UK organisations.</string>
 
     <!-- service details -->
-    <string name="service_image_description">Service</string>
+    <string name="service_image_description">Service illustration</string>
     <string name="button_book_consultation_text">Book Consultation</string>
     <string name="service_details_state_empty_primary_text">No information available about this service</string>
+    <string name="service_details_features">Key Deliverables</string>
+    <string name="service_details_availability">Available Times</string>
 
-    <!-- checkout screen -->
+    <!-- checkout -->
     <string name="checkout_text_field_first_name">First Name</string>
     <string name="checkout_text_field_last_name">Last Name</string>
     <string name="checkout_text_field_email">Email</string>
     <string name="button_confirm_booking_text">Confirm Booking</string>
+    <string name="checkout_header">Complete Your Booking</string>
+    <string name="checkout_email_error">Please enter a valid email address</string>
 
-    <!-- bookings screen -->
+    <!-- bookings -->
     <string name="bookings_state_empty_primary_text">You have no bookings yet</string>
+    <string name="bookings_state_empty_secondary_text">Browse our services and book a consultation</string>
     <string name="booking_number">Booking #%1$s</string>
     <string name="booking_customer">Customer: %1$s %2$s</string>
+    <string name="button_cancel_booking">Cancel</string>
 
-    <!-- cancel booking dialog -->
+    <!-- cancel dialog -->
     <string name="cancel_booking_dialog_title">Cancel Booking?</string>
-    <string name="clear_card_dialog_text">Are you sure you want to cancel your booking?</string>
+    <string name="clear_card_dialog_text">Are you sure you want to cancel your booking? This action cannot be undone.</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_dismiss">Dismiss</string>
 
-    <!-- settings screen -->
+    <!-- settings -->
     <string name="settings_screen_company_label">Company</string>
     <string name="settings_screen_version_label">Version</string>
-    <string name="settings_screen_customer_support_label">Customer Support</string>
-    <string name="company_name">Company Name</string>
+    <string name="settings_screen_customer_support_label">Support</string>
+    <string name="company_name">DIANA NICHOLAS LIMITED</string>
     <string name="app_version">1.0.0</string>
-    <string name="customer_support_link">https://website.org/</string>
+    <string name="customer_support_link">https://naseehahpro.uk</string>
+    <string name="settings_about_header">About</string>
+    <string name="settings_app_description">Professional IT consultancy services including cybersecurity, cloud infrastructure, and digital transformation advisory.</string>
+
+    <!-- confirmation -->
+    <string name="booking_confirmed_title">Booking Confirmed</string>
+    <string name="booking_confirmed_message">Your consultation has been booked successfully. Reference: #%1$s</string>
+    <string name="booking_confirmed_button">View Bookings</string>
 </resources>
